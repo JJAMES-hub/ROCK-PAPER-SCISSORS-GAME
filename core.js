@@ -1,48 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+let score = JSON.parse(localStorage.getItem('score'));
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+if (!score) {
+    score = {
+        win: 0,
+        lose: 0,
+        tie: 0
+    };
+}
 
-</head>
+if (score.win == null) score.win = 0;
+if (score.lose == null) score.lose = 0;
+if (score.tie == null) score.tie = 0;
 
-<body>
-
-    <button onclick="
-gamePlay('rock');
-">ROCK</button>
-
-    <button onclick="
-gamePlay('paper');
-">PAPER</button>
-
-    <button onclick="
-gamePlay('scissors');
-">SCISSORS</button>
-
-<button onclick="
-    score.win = 0;
-    score.lose = 0;
-    score.tie = 0;
-    // localStorage.removeItem('score');
-       alert(`you reset the values
-     wins:0 lose:0 Tie:0`);
-    ">RESET SCORE</button>
-   
-   <script>
- const score = JSON.parse(localStorage.getItem('score'))
-||{
-    win:0,
-    lose:0,
-    tie:0
-};
+hideGameInfo();
+updateScoreElement();
 
 function gamePlay(playerMove) {
+
+    showGameInfo();
+
     const computerPicked = computerMove();
     let results = '';
+
     if (playerMove === 'scissors') {
+
         if (computerPicked === 'rock') {
             results = 'You lose';
         } else if (computerPicked === 'paper') {
@@ -52,6 +33,7 @@ function gamePlay(playerMove) {
         }
 
     } else if (playerMove === 'paper') {
+
         if (computerPicked === 'rock') {
             results = 'You win';
         } else if (computerPicked === 'paper') {
@@ -61,6 +43,7 @@ function gamePlay(playerMove) {
         }
 
     } else if (playerMove === 'rock') {
+
         if (computerPicked === 'rock') {
             results = 'A tie';
         } else if (computerPicked === 'paper') {
@@ -68,6 +51,7 @@ function gamePlay(playerMove) {
         } else if (computerPicked === 'scissors') {
             results = 'You win';
         }
+
     }
 
     if (results === 'You win') {
@@ -77,14 +61,24 @@ function gamePlay(playerMove) {
     } else if (results === 'You lose') {
         score.lose += 1;
     }
-//console.log(JSON.stringify(score));
-localStorage.setItem('score', JSON.stringify(score));
-   
-alert(`You picked ${playerMove}. computer picked ${computerPicked}. results ${results}
-wins:${score.win} lose:${score.lose} Tie:${score.tie}`);
+
+    localStorage.setItem('score', JSON.stringify(score));
+
+    updateScoreElement();
+
+    document.querySelector('.js-results').innerHTML = `${results}`;
+    document.querySelector('.js-MyMove').innerHTML =
+        `you choose ${playerMove} - Computer ${computerPicked}`;
+
+}
+
+function updateScoreElement() {
+    document.querySelector('.js-wins')
+        .innerHTML = `wins:${score.win} lose:${score.lose} Tie:${score.tie}`;
 }
 
 function computerMove() {
+
     let randomNumber = Math.random();
     let computerPicked = '';
 
@@ -97,9 +91,18 @@ function computerMove() {
     }
 
     return computerPicked;
+
 }
-</script>
 
-</body>
+function hideGameInfo() {
+    document.querySelector('.js-wins').style.display = 'none';
+    document.querySelector('.js-results').style.display = 'none';
+    document.querySelector('.js-MyMove').style.display = 'none';
+}
 
-</html>
+function showGameInfo() {
+    document.querySelector('.js-wins').style.display = 'block';
+    document.querySelector('.js-results').style.display = 'block';
+    document.querySelector('.js-MyMove').style.display = 'block';
+}
+
