@@ -4,23 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GAME</title>
-    <link rel="stylesheet" href="mystles.css">
+    <title>ROCK PAPER SCISSORS GAME</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="core.js"></script>
 </head>
 
 <body>
+<p class="heading">ROCK-PAPER-SCISSORS GAME</p>
 
+    <nav class="navBtn">
     <button onclick="gamePlay('rock');">ROCK</button>
-
     <button onclick="gamePlay('paper');">PAPER</button>
-
     <button onclick="gamePlay('scissors');">SCISSORS</button>
-
-    <p class="js-wins">wins</p>
-    <p class="js-results"></p>
-    <p class="js-MyMove"></p>
-
     <button onclick="
     score.win = 0;
     score.lose = 0;
@@ -31,6 +26,12 @@
     hideGameInfo();
     updateScoreElement();
     ">RESET SCORE</button>
+    </nav>
+
+    <p class="js-wins">wins</p>
+    <p class="js-results"></p>
+    <p class="js-MyMove"></p>
+
 
 </body>
 
