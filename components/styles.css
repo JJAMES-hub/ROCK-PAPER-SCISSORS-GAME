@@ -1,70 +1,277 @@
- body {
-     /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-     background-color: aqua;
-     background-image: url(../images/background-image2.jpg);
-     min-height: 100vh;
-     background-size: cover;
-     background-attachment: scroll;
-     background-repeat: no-repeat; */
-       background-color: #1a1a2e; 
-    background-image: url(../images/background-image2.jpg);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
     min-height: 100vh;
-    background-size: cover;
-    background-attachment: fixed; 
-    background-repeat: no-repeat;
-    background-position: center; 
-    margin: 0; 
-    padding: 20px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    color: #fff;
+}
 
- }
+/* ===== HEADINGS ===== */
+.heading {
+    font-family: 'Romanesco', cursive;
+    font-size: 55px;
+    color: #f7d794;
+    text-shadow: 0 0 20px rgba(247, 215, 148, 0.3), 0 4px 15px rgba(0,0,0,0.5);
+    margin-bottom: 5px;
+    letter-spacing: 3px;
+    text-align: center;
+}
 
- .heading {
-     font-family: Romanesco;
-     color: blueviolet;
-     text-align: center;
-     font-size: 50px;
-     color: rgb(208, 157, 61);
- }
+.heading2 {
+    font-size: 18px;
+    color: #a8a8b8;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    font-weight: 300;
+    text-align: center;
+}
 
- .heading2 {
-     font-family: Kotta One;
-     color: purple;
-     text-align: center;
-     font-size: x-large;
- }
+/* ===== RESULT DISPLAY CONTAINER ===== */
+.result-display {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px 40px;
+    width: 80%;
+    max-width: 800px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
 
- .navBtn {
-     color: blue;
-     text-align: center;
-     gap: 15px;
- }
+/* ===== SCORE DISPLAY (wins:0 lose:0 Tie:0) ===== */
+.js-wins {
+    font-size: 28px;
+    background: rgba(247, 215, 148, 0.1);
+    border: 2px solid rgba(247, 215, 148, 0.3);
+    border-radius: 12px;
+    padding: 12px 30px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    color: #f7d794;
+    font-weight: 600;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
 
- .navBtn button {
-     font-family: Romanesco;
-     color: #0056b3;
-     background: linear-gradient(to right, #4facfe, #00f2fe);
-     cursor: pointer;
-     font-size: 30px;
-     margin: 7px;
-     position: relative;
-     border-radius: 10px;
-     padding: 10px;
+.js-wins:hover {
+    background: rgba(247, 215, 148, 0.2);
+    border-color: rgba(247, 215, 148, 0.6);
+    transform: scale(1.02);
+    box-shadow: 0 0 30px rgba(247, 215, 148, 0.1);
+}
 
- }
+/* ===== RESULT TEXT (You Win! / You Lose!) ===== */
+.js-results {
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    min-height: 50px;
+    transition: all 0.3s ease;
+}
 
- .result-display {
-     font-size: 20px;
-     color: aqua;
-     text-align: center;
- }
- .js-wins{
-    font-size: medium;
-    border: 2px solid red;
-  border-radius: 10px;
-  gap: 30px;
-text-align: center;
-padding: 10px;
-/* margin: auto; */
-width: 100%;
-        margin: 25px 50px 75px 100px;
- }
+/* ===== MY MOVE DISPLAY ===== */
+.js-MyMove {
+    font-size: 20px;
+    color: #b8b8d0;
+    min-height: 35px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* ===== NAVIGATION / BUTTONS CONTAINER ===== */
+.navBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 800px;
+}
+
+/* ===== MOVE BUTTONS CONTAINER ===== */
+.move-icon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+/* ===== INDIVIDUAL MOVE BUTTONS ===== */
+.move-icon button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 30px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 140px;
+    min-height: 140px;
+    backdrop-filter: blur(5px);
+    letter-spacing: 1px;
+}
+
+.move-icon button img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+    transition: transform 0.3s ease;
+}
+
+/* Rock button - Red theme */
+.move-icon button:first-child {
+    border-color: rgba(231, 76, 60, 0.4);
+}
+.move-icon button:first-child:hover {
+    background: rgba(231, 76, 60, 0.2);
+    border-color: #e74c3c;
+    box-shadow: 0 0 40px rgba(231, 76, 60, 0.2);
+    transform: translateY(-5px);
+}
+
+/* Paper button - Blue theme */
+.move-icon button:nth-child(2) {
+    border-color: rgba(52, 152, 219, 0.4);
+}
+.move-icon button:nth-child(2):hover {
+    background: rgba(52, 152, 219, 0.2);
+    border-color: #3498db;
+    box-shadow: 0 0 40px rgba(52, 152, 219, 0.2);
+    transform: translateY(-5px);
+}
+
+/* Scissors button - Green theme */
+.move-icon button:last-child {
+    border-color: rgba(46, 204, 113, 0.4);
+}
+.move-icon button:last-child:hover {
+    background: rgba(46, 204, 113, 0.2);
+    border-color: #2ecc71;
+    box-shadow: 0 0 40px rgba(46, 204, 113, 0.2);
+    transform: translateY(-5px);
+}
+
+.move-icon button:hover img {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.move-icon button:active {
+    transform: scale(0.92);
+}
+
+/* ===== RESET BUTTON ===== */
+.reset-btn {
+    padding: 14px 50px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    background: rgba(231, 76, 60, 0.15);
+    border: 2px solid rgba(231, 76, 60, 0.4);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    backdrop-filter: blur(5px);
+}
+
+.reset-btn:hover {
+    background: rgba(231, 76, 60, 0.3);
+    border-color: #e74c3c;
+    box-shadow: 0 0 50px rgba(231, 76, 60, 0.2);
+    transform: translateY(-3px);
+}
+
+.reset-btn:active {
+    transform: scale(0.95);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .heading {
+        font-size: 35px;
+    }
+    
+    .heading2 {
+        font-size: 14px;
+    }
+    
+    .result-display {
+        width: 95%;
+        padding: 20px;
+    }
+    
+    .js-wins {
+        font-size: 18px;
+        padding: 10px 15px;
+    }
+    
+    .js-results {
+        font-size: 26px;
+    }
+    
+    .move-icon button {
+        min-width: 100px;
+        min-height: 100px;
+        padding: 15px 20px;
+        font-size: 14px;
+    }
+    
+    .move-icon button img {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .reset-btn {
+        padding: 12px 35px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .move-icon {
+        gap: 12px;
+    }
+    
+    .move-icon button {
+        min-width: 80px;
+        min-height: 80px;
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+    
+    .move-icon button img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .js-wins {
+        font-size: 14px;
+    }
+}

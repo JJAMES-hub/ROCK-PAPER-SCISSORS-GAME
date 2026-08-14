@@ -17,7 +17,7 @@ updateScoreElement();
 
 function gamePlay(playerMove) {
 
-    showGameInfo();
+    // showGameInfo();
 
     const computerPicked = computerMove();
     let results = '';
@@ -66,15 +66,15 @@ function gamePlay(playerMove) {
 
     updateScoreElement();
 
-    document.querySelector('.js-results').innerHTML = `${results}`;
-    document.querySelector('.js-MyMove').innerHTML =
+    document.querySelector('.js-results').textContent = `${results}`;
+    document.querySelector('.js-MyMove').textContent =
         `you choose ${playerMove} - Computer ${computerPicked}`;
 
 }
 
 function updateScoreElement() {
     document.querySelector('.js-wins')
-        .innerHTML = `wins:${score.win} lose:${score.lose} Tie:${score.tie}`;
+        .textContent = `wins:${score.win}   lose:${score.lose}   Tie:${score.tie}`;
 }
 
 function computerMove() {
@@ -94,15 +94,15 @@ function computerMove() {
 
 }
 
-function hideGameInfo() {
-    document.querySelector('.js-wins').style.display = 'none';
-    document.querySelector('.js-results').style.display = 'none';
-    document.querySelector('.js-MyMove').style.display = 'none';
-}
+// function hideGameInfo() {
+//     document.querySelector('.js-wins').style.display = 'none';
+//     document.querySelector('.js-results').style.display = 'none';
+//     document.querySelector('.js-MyMove').style.display = 'none';
+// }
 
-function showGameInfo() {
-    document.querySelector('.js-wins').style.display = 'block';
-    document.querySelector('.js-results').style.display = 'block';
-    document.querySelector('.js-MyMove').style.display = 'block';
-}
+// function showGameInfo() {
+//     document.querySelector('.js-wins').style.display = 'block';
+//     document.querySelector('.js-results').style.display = 'block';
+//     document.querySelector('.js-MyMove').style.display = 'block';
+// }
 

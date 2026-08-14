@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROCK PAPER SCISSORS GAME</title>
+    <title>Rock Paper Scissors</title>
+    <link rel="icon" href="images/icon.png">
     <link rel="stylesheet" href="styles.css">
-    <script src="core.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Romanesco&display=swap" rel="stylesheet">
 
 </head>
@@ -16,26 +16,30 @@
     <p class="heading2">Challenge the computer and test your luck</p>
 
     <div class="result-display">
-        <p class="js-wins">wins</p>
-        <p class="js-results"> RESULTS</p>
-        <p class="js-MyMove">MY MOVE</p>
+        <p class="js-wins"></p>
+        <p class="js-results"></p>
+        <p class="js-MyMove"></p>
     </div>
 
     <nav class="navBtn">
-        <button onclick="gamePlay('rock');">ROCK</button>
-        <button onclick="gamePlay('paper');">PAPER</button>
-        <button onclick="gamePlay('scissors');">SCISSORS</button>
-        <button onclick="
-    score.win = 0;
-    score.lose = 0;
-    score.tie = 0;
-    alert(`you reset the values
-    wins:0 lose:0 Tie:0`);
-    localStorage.removeItem('score');
-    hideGameInfo();
-    updateScoreElement();
-    ">RESET SCORE</button>
+        <div class="move-icon">
+            <button onclick="gamePlay('rock');">ROCK <img src="../images/rock2.png"></button>
+            <button onclick="gamePlay('paper');">PAPER <img src="../images/paper image.png"></button>
+            <button onclick="gamePlay('scissors');">SCISSORS <img src="../images/scissors (1).png"></button>
+        </div>
+
+        <button class="reset-btn" onclick="
+            score.win = 0;
+            score.lose = 0;
+            score.tie = 0;
+            alert(`you reset the values
+            wins:0 lose:0 Tie:0`);
+            localStorage.removeItem('score');
+            
+            updateScoreElement();
+            ">RESET SCORE</button>
     </nav>
+    <script src="core.js"></script>
 
 </body>
 
